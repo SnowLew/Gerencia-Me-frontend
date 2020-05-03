@@ -1,7 +1,7 @@
 import axios from "axios"
-import stores from "./api/stores"
-import categories from "./api/categories"
-import products from "./api/products"
+import stores from "./stores"
+import categories from "./categories"
+import products from "./products"
 
 let token = localStorage.getItem("token") || null
 axios.defaults.headers.Authorization = "bearer " + token
