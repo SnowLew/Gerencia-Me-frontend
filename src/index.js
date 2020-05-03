@@ -8,6 +8,10 @@ import Carrinho from "./screens/carrinho"
 import ListaDesejos from "./screens/listaDesejos"
 import Produtos from "./screens/produtos"
 
+import MeuPerfil from "./screens/meuPerfil"
+import CadastrarProduto from "./screens/cadastrarProduto"
+import PlataformasVenda from "./screens/plataformasVenda"
+import Configuracoes from "./screens/configuracoes"
 import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
@@ -29,6 +33,18 @@ ReactDOM.render(
           <Route path="/carrinho" exact={true} component={Carrinho} />
           <Route path="/listaDesejos" exact={true} component={ListaDesejos} />
           <Route path="/produtos" exact={true} component={Produtos} />
+          <Route path="/meuPerfil" exact={true} component={MeuPerfil} />
+          <Route
+            path="/cadastrarProduto"
+            exact={true}
+            component={CadastrarProduto}
+          />
+          <Route
+            path="/plataformasVenda"
+            exact={true}
+            component={PlataformasVenda}
+          />
+          <Route path="/configuracoes" exact={true} component={Configuracoes} />
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>
