@@ -15,9 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import clsx from 'clsx';
-
 import colors from '../../colors'
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Box, Typography } from '@material-ui/core';
 let { primary } = colors
 
 const useStyles = makeStyles({
@@ -65,6 +64,33 @@ const useStyles = makeStyles({
   },
 });
 
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    "aria-controls": `scrollable-auto-tabpanel-${index}`
+  };
+}
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
 
 const StyledTab = withStyles((theme) => ({
   root: {
@@ -103,14 +129,8 @@ const StyledTabs = withStyles({
 })((props) => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
 
-function RenderTabs(props) {
+function RenderTabs(props, value,setValue, handleChange) {
   const classes = useStyles();
-
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   
   let renderObj = [];
   for(let i = 0; i< props.children.length; i++) {
@@ -118,6 +138,7 @@ function RenderTabs(props) {
   } 
 
   return (
+      <>
         <StyledTabs
           value={value}
           onChange={handleChange}
@@ -129,12 +150,13 @@ function RenderTabs(props) {
           renderObj
         }
       </StyledTabs>
+      </>
   )
 }
 
 function RenderTab(children, key){ 
   return (
-    <StyledTab key={key} label={children} />
+    <StyledTab {...a11yProps(key)} key={key} label={children} />
   )
 }
 
@@ -219,6 +241,11 @@ function RenderMenu(){
 
 function TabMenu(props) {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const [state, setState] = React.useState({
     left: false,
@@ -248,15 +275,6 @@ function TabMenu(props) {
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
-        {['All Perfil', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 
@@ -269,7 +287,7 @@ function TabMenu(props) {
       className={classes.Grid}
       >
         {RenderMenu()}
-        {RenderTabs(props)}
+        {RenderTabs(props, value, setValue, handleChange)}
       </Grid>
     </div>
   )

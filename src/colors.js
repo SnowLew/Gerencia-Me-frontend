@@ -4,6 +4,7 @@ const colors = {
         lightText: '#fafafa',
         darkText: '#242730',
         lighBackgroundColor: 'white',
+        backgroundColorLowOpacity: '#f2c7c7',
         tabColorBackground: 'pink',
         tabColorIndicator: '#D87717',
         darkTextPlus: 'black',
