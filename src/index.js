@@ -6,7 +6,7 @@ import Main from "./screens/main"
 import Vendedores from "./screens/vendedores"
 import Carrinho from "./screens/carrinho"
 import ListaDesejos from "./screens/listaDesejos"
-import Produtos from "./screens/produtos"
+import Categorias from "./screens/categorias"
 
 import MeuPerfil from "./screens/meuPerfil"
 import CadastrarProduto from "./screens/cadastrarProduto"
@@ -28,12 +28,16 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/" exact={true} component={Login} />
-          <Route path="/main" exact={true} component={Main} />
+          <Route path="/produtos" exact={true} component={Main} />
           <Route path="/vendedores" exact={true} component={Vendedores} />
           <Route path="/carrinho" exact={true} component={Carrinho} />
           <Route path="/listaDesejos" exact={true} component={ListaDesejos} />
-          <Route path="/produtos" exact={true} component={Produtos} />
           <Route path="/meuPerfil" exact={true} component={MeuPerfil} />
+          <Route
+            path="/categorias/:category"
+            exact={true}
+            component={Categorias}
+          />
           <Route
             path="/cadastrarProduto"
             exact={true}

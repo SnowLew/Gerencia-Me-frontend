@@ -1,3 +1,5 @@
+/* eslint-disable no-sparse-arrays */
+/* eslint-disable no-fallthrough */
 import React from "react"
 import Button from "@material-ui/core/Button"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
@@ -76,12 +78,17 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  buttonActivate: {
+    opacity: 1,
+    color: primary.lightText,
+    backgroundColor: primary.backgroundColor,
+  },
   listItemIcon: {
     margin: 30,
   },
 }))
 
-export default function MenuNavigator() {
+export default function MenuNavigator(props) {
   const classes = useStyles()
   let history = useHistory()
 
@@ -115,6 +122,30 @@ export default function MenuNavigator() {
 
   let redirectToTarget = (to) => {
     history.push(`/${to}`)
+  }
+
+  let redirectToTargetDrawer = (index) => {
+    let route = ""
+    console.log(index)
+    switch (index) {
+      case 0: {
+        route = "meuPerfil"
+        break
+      }
+      case 1: {
+        route = "cadastrarProdutos"
+        break
+      }
+      case 2: {
+        route = "plataformasVenda"
+        break
+      }
+      case 3: {
+        route = "configuracoes"
+        break
+      }
+    }
+    history.push(`/${route}`)
   }
 
   let RenderMenu = () => {
@@ -165,7 +196,12 @@ export default function MenuNavigator() {
           <h1 className={classes.userText}>{userInfo.name}</h1>
           <Divider />
           {listItems.map(({ text }, index) => (
-            <ListItem className={classes.drawerButton} button key={text}>
+            <ListItem
+              onClick={() => redirectToTargetDrawer(index)}
+              className={classes.drawerButton}
+              button
+              key={text}
+            >
               <ListItemIcon nameClass={classes.listItemIcon}>
                 {chooseIcon(index)}
               </ListItemIcon>
@@ -212,25 +248,41 @@ export default function MenuNavigator() {
         <RenderMenu />
         <Button
           onClick={() => redirectToTarget("produtos")}
-          className={classes.button}
+          className={
+            props.routeListen == "produtos"
+              ? classes.buttonActivate
+              : classes.button
+          }
         >
           Produtos
         </Button>
         <Button
           onClick={() => redirectToTarget("vendedores")}
-          className={classes.button}
+          className={
+            props.routeListen == "vendedores"
+              ? classes.buttonActivate
+              : classes.button
+          }
         >
           Vendedores
         </Button>
         <Button
           onClick={() => redirectToTarget("listaDesejos")}
-          className={classes.button}
+          className={
+            props.routeListen == "listaDesejos"
+              ? classes.buttonActivate
+              : classes.button
+          }
         >
           Lista de Desejos
         </Button>
         <Button
           onClick={() => redirectToTarget("carrinho")}
-          className={classes.button}
+          className={
+            props.routeListen == "carrinho"
+              ? classes.buttonActivate
+              : classes.button
+          }
         >
           Carrinho
         </Button>
