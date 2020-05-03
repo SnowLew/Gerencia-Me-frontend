@@ -2,11 +2,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import colors from '../../colors'
-import { useHistory } from "react-router-dom";
-
-
 
 let { primary } = colors;
 
@@ -31,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
         color: primary.darkTextPlus,
         backgroundColor: primary.backgroundColor,
     }
-  },
-
+  }
 }));
+
 
 function MenuNavigator () {
     const classes = useStyles()
@@ -47,6 +46,7 @@ function MenuNavigator () {
 
     return(
         <div className={classes.root}>
+        {RenderMenu()}
         <ButtonGroup 
         variant='default' 
         size="large" 
