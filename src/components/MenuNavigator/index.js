@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -22,6 +23,17 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 let { primary } = colors;
+=======
+import React from "react"
+import Button from "@material-ui/core/Button"
+import ButtonGroup from "@material-ui/core/ButtonGroup"
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
+import { useHistory } from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
+import colors from "../../colors"
+
+let { primary } = colors
+>>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: primary.backgroundColor,
     },
   },
+<<<<<<< HEAD
   buttonMenu: {},
   list: {
     width: "300px",
@@ -199,6 +212,19 @@ export default function MenuNavigator() {
       </>
     );
   };
+=======
+}))
+
+function MenuNavigator() {
+  const classes = useStyles()
+
+  let history = useHistory()
+
+  let redirectToTarget = (to) => {
+    console.log("aa")
+    history.push(`/${to}`)
+  }
+>>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
 
   return (
     <div className={classes.root}>
@@ -209,7 +235,13 @@ export default function MenuNavigator() {
         aria-label="large outlined primary button group"
         className={classes.buttonGroup}
       >
+<<<<<<< HEAD
         <RenderMenu />
+=======
+        <Button onClick={() => console.log("opa")} className={classes.menu}>
+          Menu
+        </Button>
+>>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
         <Button
           onClick={() => redirectToTarget("produtos")}
           className={classes.button}
@@ -236,5 +268,12 @@ export default function MenuNavigator() {
         </Button>
       </ButtonGroup>
     </div>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+}
+
+export default MenuNavigator
+>>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
