@@ -5,8 +5,6 @@ import React from "react"
 import Header from "../../components/Header"
 import MenuNavigator from "../../components/MenuNavigator"
 import { Container, Divider, IconButton, Button } from "@material-ui/core"
-import Paper from "@material-ui/core/Paper"
-import FavoriteIcon from "@material-ui/icons/Favorite"
 import DinamicCard from "../../components/DinamicCardProduct"
 import Card from "@material-ui/core/Card"
 import { useHistory } from "react-router-dom"
@@ -153,7 +151,7 @@ function Main() {
 
         <div className={classes.mostSaler}>
           <div>
-            <DinamicCard data={bestSell} />
+            <DinamicCard withMarket data={bestSell} />
           </div>
         </div>
         <Card className={classes.paperBody}></Card>
@@ -165,6 +163,7 @@ function Main() {
         <div className={classes.mostSaler}>
           <div className={classes.divDinamic}>
             <DinamicCard
+              toGo={"categorias"}
               onClick={redirectToTarget}
               variant={"category"}
               data={categorias}

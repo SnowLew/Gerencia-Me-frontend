@@ -5,6 +5,8 @@ import React from "react"
 import { Container, Divider, IconButton, Button } from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
 import FavoriteIcon from "@material-ui/icons/Favorite"
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart"
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
 
 import Card from "@material-ui/core/Card"
 
@@ -130,7 +132,7 @@ function RenderCard(props) {
             <p>{data[i].description}</p>
           </div>
           <Divider />
-          <Button onClick={() => props.onClick("categorias", data[i].name)}>
+          <Button onClick={() => props.onClick(props.toGo, data[i].name)}>
             {" "}
             Ver mais{" "}
           </Button>
@@ -156,6 +158,17 @@ function RenderCard(props) {
           <IconButton>
             <FavoriteIcon />
           </IconButton>
+          {props.withRemover && (
+            <IconButton>
+              <RemoveShoppingCartIcon />
+            </IconButton>
+          )}
+          {props.withMarket && (
+            <IconButton>
+              <ShoppingCartIcon />
+            </IconButton>
+          )}
+
           <h1 className={classes.mostSalerTextFooter}>$ {data[i].price} </h1>
         </div>
       </Paper>,

@@ -82,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     color: primary.lightText,
     backgroundColor: primary.backgroundColor,
+    "&:hover": {
+      color: primary.darkTextPlus,
+    },
   },
   listItemIcon: {
     margin: 30,

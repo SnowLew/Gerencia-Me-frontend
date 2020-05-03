@@ -88,7 +88,7 @@ function Categorias(props) {
 
         <div className={classes.mostSaler}>
           <div>
-            <DinamicCard data={bestSell} />
+            <DinamicCard withMarket data={bestSell} />
           </div>
         </div>
         <Card className={classes.paperBody}></Card>

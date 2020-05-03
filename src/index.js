@@ -29,6 +29,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/" exact={true} component={Login} />
           <Route path="/produtos" exact={true} component={Main} />
+          <Route path="/produtos/:idShop" exact={true} component={Main} />
           <Route path="/vendedores" exact={true} component={Vendedores} />
           <Route path="/carrinho" exact={true} component={Carrinho} />
           <Route path="/listaDesejos" exact={true} component={ListaDesejos} />
