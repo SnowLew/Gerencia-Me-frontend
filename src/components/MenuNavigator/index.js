@@ -46,7 +46,6 @@ function MenuNavigator () {
 
     return(
         <div className={classes.root}>
-        {RenderMenu()}
         <ButtonGroup 
         variant='default' 
         size="large" 
