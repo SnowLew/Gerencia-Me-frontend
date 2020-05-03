@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import colors from "../../colors";
-import {
-  List,
-  Avatar,
-  Divider,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from "@material-ui/core";
-import clsx from "clsx";
-
-import PersonIcon from "@material-ui/icons/Person";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import SettingsIcon from "@material-ui/icons/Settings";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-let { primary } = colors;
-=======
 import React from "react"
 import Button from "@material-ui/core/Button"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
@@ -31,9 +5,23 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
+import {
+  List,
+  Avatar,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core"
+import clsx from "clsx"
+
+import PersonIcon from "@material-ui/icons/Person"
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart"
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn"
+import SettingsIcon from "@material-ui/icons/Settings"
+import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 
 let { primary } = colors
->>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: primary.backgroundColor,
     },
   },
-<<<<<<< HEAD
   buttonMenu: {},
   list: {
     width: "300px",
@@ -92,21 +79,21 @@ const useStyles = makeStyles((theme) => ({
   listItemIcon: {
     margin: 30,
   },
-}));
+}))
 
 export default function MenuNavigator() {
-  const classes = useStyles();
-  let history = useHistory();
+  const classes = useStyles()
+  let history = useHistory()
 
   const [state, setState] = React.useState({
     left: false,
-  });
+  })
 
   let userInfo = {
     name: "Aroldo Goulart Barros",
     urlImage:
       "https://avatars3.githubusercontent.com/u/38509926?s=400&u=97e73e9caf6fe68bebc3019fb7c2c81cf5bda20c&v=4https://avatars3.githubusercontent.com/u/38509926?s=400&u=97e73e9caf6fe68bebc3019fb7c2c81cf5bda20c&v=4",
-  };
+  }
   let listItems = [
     {
       text: "Meu Perfil",
@@ -124,11 +111,11 @@ export default function MenuNavigator() {
     {
       text: "Sair",
     },
-  ];
+  ]
 
   let redirectToTarget = (to) => {
-    history.push(`/${to}`);
-  };
+    history.push(`/${to}`)
+  }
 
   let RenderMenu = () => {
     const toggleDrawer = (anchor, open) => (event) => {
@@ -137,29 +124,29 @@ export default function MenuNavigator() {
         event.type === "keydown" &&
         (event.key === "Tab" || event.key === "Shift")
       ) {
-        return;
+        return
       }
-      setState({ ...state, [anchor]: open });
-    };
+      setState({ ...state, [anchor]: open })
+    }
     let chooseIcon = (index) => {
       switch (index) {
         case 0: {
-          return <PersonIcon />;
+          return <PersonIcon />
         }
         case 1: {
-          return <AddShoppingCartIcon />;
+          return <AddShoppingCartIcon />
         }
         case 2: {
-          return <MonetizationOnIcon />;
+          return <MonetizationOnIcon />
         }
         case 3: {
-          return <SettingsIcon />;
+          return <SettingsIcon />
         }
         default: {
-          return <ExitToAppIcon />;
+          return <ExitToAppIcon />
         }
       }
-    };
+    }
 
     const list = (anchor) => (
       <div
@@ -187,7 +174,7 @@ export default function MenuNavigator() {
           ))}
         </List>
       </div>
-    );
+    )
 
     return (
       <>
@@ -210,21 +197,8 @@ export default function MenuNavigator() {
           </React.Fragment>
         ))}
       </>
-    );
-  };
-=======
-}))
-
-function MenuNavigator() {
-  const classes = useStyles()
-
-  let history = useHistory()
-
-  let redirectToTarget = (to) => {
-    console.log("aa")
-    history.push(`/${to}`)
+    )
   }
->>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
 
   return (
     <div className={classes.root}>
@@ -235,13 +209,7 @@ function MenuNavigator() {
         aria-label="large outlined primary button group"
         className={classes.buttonGroup}
       >
-<<<<<<< HEAD
         <RenderMenu />
-=======
-        <Button onClick={() => console.log("opa")} className={classes.menu}>
-          Menu
-        </Button>
->>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
         <Button
           onClick={() => redirectToTarget("produtos")}
           className={classes.button}
@@ -268,12 +236,5 @@ function MenuNavigator() {
         </Button>
       </ButtonGroup>
     </div>
-<<<<<<< HEAD
-  );
-}
-=======
   )
 }
-
-export default MenuNavigator
->>>>>>> f2883cefd4e5d2f1aba2a2cd0a1ce72360f382a7
