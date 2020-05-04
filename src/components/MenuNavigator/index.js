@@ -112,9 +112,6 @@ export default function MenuNavigator(props) {
       text: "Cadastrar Produtos",
     },
     {
-      text: "Plataformas de Venda",
-    },
-    {
       text: "Configurações",
     },
     ,
@@ -136,14 +133,10 @@ export default function MenuNavigator(props) {
         break
       }
       case 1: {
-        route = "cadastrarProdutos"
+        route = "cadastrarProduto"
         break
       }
       case 2: {
-        route = "plataformasVenda"
-        break
-      }
-      case 3: {
         route = "configuracoes"
         break
       }
@@ -171,9 +164,6 @@ export default function MenuNavigator(props) {
           return <AddShoppingCartIcon />
         }
         case 2: {
-          return <MonetizationOnIcon />
-        }
-        case 3: {
           return <SettingsIcon />
         }
         default: {

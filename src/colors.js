@@ -5,10 +5,10 @@ const colors = {
     darkText: "#242730",
     lighBackgroundColor: "white",
     backgroundColorLowOpacity: "#f2c7c7",
-    tabColorBackground: "pink",
-    tabColorIndicator: "#D87717",
     darkTextPlus: "black",
     drawerTextColor: "#D87777",
+    buttonDone: "#6de88e",
+    buttonClean: "#cce8ed",
   },
   secondary: {},
 }

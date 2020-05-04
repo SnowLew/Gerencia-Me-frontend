@@ -12,6 +12,7 @@ import MeuPerfil from "./screens/meuPerfil"
 import CadastrarProduto from "./screens/cadastrarProduto"
 import PlataformasVenda from "./screens/plataformasVenda"
 import Configuracoes from "./screens/configuracoes"
+
 import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"

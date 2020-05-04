@@ -166,7 +166,7 @@ export default function SignInSide() {
 
               <Button
                 type="submit"
-                href="/main"
+                href="/produtos"
                 fullWidth
                 variant={"outlined"}
                 className={classes.buttonLogin}
