@@ -7,6 +7,7 @@ import Vendedores from "./screens/vendedores"
 import Carrinho from "./screens/carrinho"
 import ListaDesejos from "./screens/listaDesejos"
 import Categorias from "./screens/categorias"
+import MainCategorias from "./screens/mainCategorias"
 
 import MeuPerfil from "./screens/meuPerfil"
 import CadastrarProduto from "./screens/cadastrarProduto"
@@ -32,6 +33,11 @@ ReactDOM.render(
         <Switch>
           <Route path="/" exact={true} component={Login} />
           <Route path="/produtos" exact={true} component={Main} />
+          <Route
+            path="/mainCategorias"
+            exact={true}
+            component={MainCategorias}
+          />
           <Route path="/produtos/:idShop" exact={true} component={Main} />
           <Route path="/vendedores" exact={true} component={Vendedores} />
           <Route path="/carrinho" exact={true} component={Carrinho} />

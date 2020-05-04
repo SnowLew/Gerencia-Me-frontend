@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-sparse-arrays */
 /* eslint-disable no-fallthrough */
 import React from "react"
@@ -252,6 +253,16 @@ export default function MenuNavigator(props) {
           }
         >
           Produtos
+        </Button>
+        <Button
+          onClick={() => redirectToTarget("mainCategorias")}
+          className={
+            props.routeListen == "mainCategorias"
+              ? classes.buttonActivate
+              : classes.button
+          }
+        >
+          Categorias
         </Button>
         <Button
           onClick={() => redirectToTarget("vendedores")}
