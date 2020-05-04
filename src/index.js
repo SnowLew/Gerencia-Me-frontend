@@ -27,6 +27,8 @@ const fontTheme = createMuiTheme({
 })
 
 const isAuth = () => {
+  localStorage.removeItem("token")
+  localStorage.removeItem("expires")
   const expires = localStorage.getItem("expires")
   const token = localStorage.getItem("token")
 

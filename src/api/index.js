@@ -38,7 +38,8 @@ const api = () => {
           return true
         }
       } catch (error) {
-        console.log(error)
+        console.log(error.response)
+        return false
       }
     }
   }
