@@ -22,7 +22,6 @@ const NewContainer = withStyles((theme) => ({
     backgroundColor: primary.backgroundColor,
     marginTop: 0,
     opacity: 0.89,
-    width: "100%",
   },
 }))((props) => <Paper {...props} />)
 

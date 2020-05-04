@@ -16,10 +16,9 @@ let { primary } = colors
 
 const styles = makeStyles({
   paper: {
-    height: "150%",
+    // height: "150%",
     backgroundColor: primary.backgroundColor,
     width: "100%",
-    position: "absolute",
   },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
@@ -27,7 +26,8 @@ const styles = makeStyles({
     width: "220px",
     padding: "4px",
     opacity: 0.8,
-    borderRadius: "4px",
+    borderRadius: "8px",
+    marginBottom: "10px",
   },
   text: {
     textAlign: "center",

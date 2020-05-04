@@ -195,6 +195,7 @@ function RenderMenu() {
 
   const list = (anchor) => (
     <div
+      style={style}
       className={clsx(classes.list)}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -305,6 +306,10 @@ function TabMenu(props) {
       </Grid>
     </div>
   )
+}
+
+const style = {
+  width: "80%",
 }
 
 export default TabMenu

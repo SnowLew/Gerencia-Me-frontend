@@ -17,6 +17,8 @@ import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
+import "./index.css"
+
 const fontTheme = createMuiTheme({
   typography: {
     fontFamily: '"PT Sans", sans-serif',
