@@ -4,24 +4,24 @@ import React from "react"
 
 import Header from "../../components/Header"
 import MenuNavigator from "../../components/MenuNavigator"
-import { Container, Divider, IconButton, Button } from "@material-ui/core"
-import Paper from "@material-ui/core/Paper"
-import FavoriteIcon from "@material-ui/icons/Favorite"
+import { Container } from "@material-ui/core"
 import DinamicCard from "../../components/DinamicCardProduct"
-import Card from "@material-ui/core/Card"
 import { useHistory } from "react-router-dom"
 
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
 let { primary } = colors
 
 const styles = makeStyles({
   paper: {
-    height: "150%",
+    // height: "150%",
     backgroundColor: primary.backgroundColor,
     width: "100%",
-    position: "absolute",
+  },
+  wallpaper: {
+    padding: "10px",
+    marginTop: "0px",
   },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
@@ -29,7 +29,8 @@ const styles = makeStyles({
     width: "220px",
     padding: "4px",
     opacity: 0.8,
-    borderRadius: "4px",
+    borderRadius: "8px",
+    marginBottom: "10px",
   },
   text: {
     textAlign: "center",
@@ -105,18 +106,20 @@ function Carrinho() {
       <Header />
       <MenuNavigator routeListen={"carrinho"} />
       <Container className={classes.paper}>
-        <div className={classes.cardHeader}>
-          <h1 className={classes.text}>Carrinho</h1>
-        </div>
+        <div className={classes.wallpaper}>
+          <div className={classes.cardHeader}>
+            <h1 className={classes.text}>Carrinho</h1>
+          </div>
 
-        <div className={classes.mostSaler}>
-          <div className={classes.divDinamic}>
-            <DinamicCard
-              toGo={"produtos"}
-              onClick={redirectToTarget}
-              data={bestSell}
-              withRemover={true}
-            />
+          <div className={classes.mostSaler}>
+            <div className={classes.divDinamic}>
+              <DinamicCard
+                toGo={"produtos"}
+                onClick={redirectToTarget}
+                data={bestSell}
+                withRemover={true}
+              />
+            </div>
           </div>
         </div>
       </Container>

@@ -20,6 +20,10 @@ const styles = makeStyles({
     backgroundColor: primary.backgroundColor,
     width: "100%",
   },
+  wallpaper: {
+    padding: "10px",
+    marginTop: "0px",
+  },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
     marginTop: "40px",
@@ -78,18 +82,20 @@ function Main() {
       <Header />
       <MenuNavigator routeListen={"mainCategorias"} />
       <Container className={classes.paper}>
-        <div className={classes.cardHeader}>
-          <h1 className={classes.text}>Categorias</h1>
-        </div>
+        <div className={classes.wallpaper}>
+          <div className={classes.cardHeader}>
+            <h1 className={classes.text}>Categorias</h1>
+          </div>
 
-        <div className={classes.mostSaler}>
-          <div className={classes.divDinamic}>
-            <DinamicCard
-              toGo={"categorias"}
-              onClick={redirectToTarget}
-              variant={"category"}
-              data={categorias}
-            />
+          <div className={classes.mostSaler}>
+            <div className={classes.divDinamic}>
+              <DinamicCard
+                toGo={"categorias"}
+                onClick={redirectToTarget}
+                variant={"category"}
+                data={categorias}
+              />
+            </div>
           </div>
         </div>
       </Container>

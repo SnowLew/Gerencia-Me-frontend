@@ -26,10 +26,13 @@ let { primary } = colors
 
 const styles = makeStyles({
   paper: {
-    height: "150%",
+    // height: "150%",
     backgroundColor: primary.backgroundColor,
     width: "100%",
-    position: "absolute",
+  },
+  wallpaper: {
+    padding: "10px",
+    marginTop: "0px",
   },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
@@ -37,7 +40,8 @@ const styles = makeStyles({
     width: "220px",
     padding: "4px",
     opacity: 0.8,
-    borderRadius: "4px",
+    borderRadius: "8px",
+    marginBottom: "10px",
   },
   text: {
     textAlign: "center",
@@ -87,6 +91,11 @@ const styles = makeStyles({
   textMeuPerfil: {
     fontSize: "30px",
   },
+  buttonSubmit: {
+    background: primary.buttonDone,
+    padding: "15px",
+    margin: "10px",
+  },
 })
 
 function MeuPerfil() {
@@ -119,7 +128,8 @@ function MeuPerfil() {
   }
 
   let buttonSubmit = () => {
-    alert("Produto Cadastrado!")
+    alert("Perfil Alterado!")
+    console.log(name, description, contato, localidade, links)
     redirectToTarget("produtos")
   }
 
@@ -128,82 +138,94 @@ function MeuPerfil() {
       <Header />
       <MenuNavigator />
       <Container className={classes.paper}>
-        <div className={classes.mostSaler}>
-          <div>
-            <form noValidate autoComplete="off">
-              <Grid
-                container
-                direction="row"
-                justify="space-evenly"
-                alignItems="flex-start"
-                className={classes.gridPrincipal}
-                spacing={3}
-              >
-                <Grid item xs={6}>
-                  <div>
-                    <img
-                      height={"20%"}
-                      width={"100%"}
-                      className={classes.image}
-                      src={user.pictures}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={6}>
-                  <div className={classes.divLateral}>
-                    <h1 className={classes.textMeuPerfil}>Meu Perfil</h1>
+        <div className={classes.wallpaper}>
+          <div className={classes.mostSaler}>
+            <div>
+              <form noValidate autoComplete="on">
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-evenly"
+                  alignItems="flex-start"
+                  className={classes.gridPrincipal}
+                  spacing={3}
+                >
+                  <Grid item xs={6}>
+                    <div>
+                      <img
+                        height={"20%"}
+                        width={"100%"}
+                        className={classes.image}
+                        src={user.pictures}
+                      />
+                    </div>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <div className={classes.divLateral}>
+                      <h1 className={classes.textMeuPerfil}>Meu Perfil</h1>
 
-                    <TextField
-                      value={name}
+                      <TextField
+                        value={name}
+                        fullWidth
+                        onChange={(event) => setName(event.target.value)}
+                        id="name"
+                        label="Nome"
+                        variant="filled"
+                        className={classes.buttons}
+                      />
+                      <TextField
+                        fullWidth
+                        value={contato}
+                        onChange={(event) => setContato(event.target.value)}
+                        id="filled-Contato"
+                        label="Contato"
+                        variant="filled"
+                        className={classes.buttons}
+                      />
+                      <TextField
+                        value={localidade}
+                        fullWidth
+                        onChange={(event) => setLocalidade(event.target.value)}
+                        id="filled-Localidade"
+                        label="Localidade"
+                        variant="filled"
+                        className={classes.buttons}
+                      />
+                      <TextField
+                        value={links}
+                        fullWidth
+                        onChange={(event) => setLinks(event.target.value)}
+                        id="filled-Links"
+                        label="Links"
+                        variant="filled"
+                        className={classes.buttons}
+                      />
+                      <TextField
+                        value={description}
+                        fullWidth
+                        onChange={(event) => setDescription(event.target.value)}
+                        id="filled-description"
+                        label="Description"
+                        variant="filled"
+                        multiline
+                        rows={4}
+                        className={classes.buttons}
+                      />
+                    </div>
+                  </Grid>
+                  <Divider />
+                  <div>
+                    <Button
+                      onClick={buttonSubmit}
                       fullWidth
-                      onChange={(event) => setName(event.target.value)}
-                      id="filled-basic"
-                      label="Nome"
-                      variant="filled"
-                      className={classes.buttons}
-                    />
-                    <TextField
-                      fullWidth
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
-                      id="filled-basic"
-                      label="Contato"
-                      variant="filled"
-                      className={classes.buttons}
-                    />
-                    <TextField
-                      value={name}
-                      fullWidth
-                      onChange={(event) => setName(event.target.value)}
-                      id="filled-basic"
-                      label="Localidade"
-                      variant="filled"
-                      className={classes.buttons}
-                    />
-                    <TextField
-                      value={name}
-                      fullWidth
-                      onChange={(event) => setName(event.target.value)}
-                      id="filled-basic"
-                      label="Links"
-                      variant="filled"
-                      className={classes.buttons}
-                    />
-                    <TextField
-                      value={name}
-                      fullWidth
-                      onChange={(event) => setName(event.target.value)}
-                      id="filled-basic"
-                      label="Description"
-                      variant="filled"
-                      multiline
-                      rows={4}
-                      className={classes.buttons}
-                    />
+                      className={classes.buttonSubmit}
+                    >
+                      Enviar Novos Dados
+                    </Button>
                   </div>
                 </Grid>
-              </Grid>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </Container>

@@ -25,19 +25,28 @@ const fontTheme = createMuiTheme({
     fontFamily: '"Roboto Condensed", sans-serif',
   },
 })
+localStorage.getItem("token")
+
+// Fazer verificacao
+let isAuth = true
 
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemeProvider theme={fontTheme}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact={true} component={Login} />
-          <Route path="/produtos" exact={true} component={Main} />
+          {isAuth ? (
+            <Route path="/" exact={true} component={Main} />
+          ) : (
+            <Route path="/" exact={true} component={Login} />
+          )}
           <Route
             path="/mainCategorias"
             exact={true}
             component={MainCategorias}
           />
+          <Route path="/produtos" exact={true} component={Main} />
+
           <Route path="/produtos/:idShop" exact={true} component={Main} />
           <Route path="/vendedores" exact={true} component={Vendedores} />
           <Route path="/carrinho" exact={true} component={Carrinho} />

@@ -72,13 +72,13 @@ const styles = makeStyles({
     margin: "10px",
     height: "450px",
     width: "250px",
+    marginBottom: 0,
   },
   mostSalerBackgroundFour: {
     padding: "7px",
     margin: "10px",
     height: "450px",
     width: "250px",
-    marginTop: "-100px",
   },
   mostSalerTextHeader: {
     fontSize: "25px",
@@ -118,24 +118,19 @@ function RenderCard(props) {
     for (let i = 0; i < data.length; i++) {
       renderObj = [
         ...renderObj,
-        <Paper
-          elevation={0}
-          className={
-            i >= 4
-              ? classes.mostSalerBackgroundFour
-              : classes.mostSalerBackground
-          }
-        >
-          <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
-          <img className={classes.mostSalerImage} src={data[i].image} />
-          <div className={classes.categoriasDe}>
-            <p>{data[i].description}</p>
+        <Paper elevation={0} className={classes.mostSalerBackground}>
+          <div>
+            <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
+            <img className={classes.mostSalerImage} src={data[i].image} />
+            <div className={classes.categoriasDe}>
+              <p>{data[i].description}</p>
+            </div>
+            <Divider />
+            <Button onClick={() => props.onClick(props.toGo, data[i].name)}>
+              {" "}
+              Ver mais{" "}
+            </Button>
           </div>
-          <Divider />
-          <Button onClick={() => props.onClick(props.toGo, data[i].name)}>
-            {" "}
-            Ver mais{" "}
-          </Button>
         </Paper>,
       ]
     }
@@ -147,29 +142,31 @@ function RenderCard(props) {
     renderObj = [
       ...renderObj,
       <Paper elevation={0} className={classes.mostSalerBackground}>
-        <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
-        <h4 className={classes.mostSalerTextAutor}>@{data[i].autor}</h4>
-        <img className={classes.mostSalerImage} src={data[i].image} />
-        <div className={classes.mostSalerDivParagraf}>
-          <p>{data[i].description}</p>
-        </div>
-        <Divider />
-        <div className={classes.mostSalerDivFooter}>
-          <IconButton>
-            <FavoriteIcon />
-          </IconButton>
-          {props.withRemover && (
+        <div>
+          <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
+          <h4 className={classes.mostSalerTextAutor}>@{data[i].autor}</h4>
+          <img className={classes.mostSalerImage} src={data[i].image} />
+          <div className={classes.mostSalerDivParagraf}>
+            <p>{data[i].description}</p>
+          </div>
+          <Divider />
+          <div className={classes.mostSalerDivFooter}>
             <IconButton>
-              <RemoveShoppingCartIcon />
+              <FavoriteIcon />
             </IconButton>
-          )}
-          {props.withMarket && (
-            <IconButton>
-              <ShoppingCartIcon />
-            </IconButton>
-          )}
+            {props.withRemover && (
+              <IconButton>
+                <RemoveShoppingCartIcon />
+              </IconButton>
+            )}
+            {props.withMarket && (
+              <IconButton>
+                <ShoppingCartIcon />
+              </IconButton>
+            )}
 
-          <h1 className={classes.mostSalerTextFooter}>$ {data[i].price} </h1>
+            <h1 className={classes.mostSalerTextFooter}>$ {data[i].price} </h1>
+          </div>
         </div>
       </Paper>,
     ]

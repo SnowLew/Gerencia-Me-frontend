@@ -13,10 +13,13 @@ let { primary } = colors
 
 const styles = makeStyles({
   paper: {
-    height: "90%",
+    // height: "150%",
     backgroundColor: primary.backgroundColor,
     width: "100%",
-    position: "absolute",
+  },
+  wallpaper: {
+    padding: "10px",
+    marginTop: "0px",
   },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
@@ -24,7 +27,8 @@ const styles = makeStyles({
     width: "220px",
     padding: "4px",
     opacity: 0.8,
-    borderRadius: "4px",
+    borderRadius: "8px",
+    marginBottom: "10px",
   },
   text: {
     textAlign: "center",
@@ -82,16 +86,18 @@ function Categorias(props) {
       <Header />
       <MenuNavigator />
       <Container className={classes.paper}>
-        <div className={classes.cardHeader}>
-          <h1 className={classes.text}>{mainText}</h1>
-        </div>
-
-        <div className={classes.mostSaler}>
-          <div>
-            <DinamicCard withMarket data={bestSell} />
+        <div className={classes.wallpaper}>
+          <div className={classes.cardHeader}>
+            <h1 className={classes.text}>{mainText}</h1>
           </div>
+
+          <div className={classes.mostSaler}>
+            <div>
+              <DinamicCard withMarket data={bestSell} />
+            </div>
+          </div>
+          <Card className={classes.paperBody}></Card>
         </div>
-        <Card className={classes.paperBody}></Card>
       </Container>
     </>
   )

@@ -18,10 +18,13 @@ let { primary } = colors
 
 const styles = makeStyles({
   paper: {
-    height: "150%",
+    // height: "150%",
     backgroundColor: primary.backgroundColor,
     width: "100%",
-    position: "absolute",
+  },
+  wallpaper: {
+    padding: "10px",
+    marginTop: "0px",
   },
   cardHeader: {
     backgroundColor: primary.lighBackgroundColor,
@@ -29,7 +32,8 @@ const styles = makeStyles({
     width: "220px",
     padding: "4px",
     opacity: 0.8,
-    borderRadius: "4px",
+    borderRadius: "8px",
+    marginBottom: "10px",
   },
   text: {
     textAlign: "center",
@@ -147,18 +151,20 @@ function Vendedores() {
       <Header />
       <MenuNavigator routeListen={"vendedores"} />
       <Container className={classes.paper}>
-        <div className={classes.cardHeader}>
-          <h1 className={classes.text}>Vendedores</h1>
-        </div>
+        <div className={classes.wallpaper}>
+          <div className={classes.cardHeader}>
+            <h1 className={classes.text}>Vendedores</h1>
+          </div>
 
-        <div className={classes.mostSaler}>
-          <div className={classes.divDinamic}>
-            <DinamicCard
-              toGo={"produtos"}
-              onClick={redirectToTarget}
-              variant={"category"}
-              data={categorias}
-            />
+          <div className={classes.mostSaler}>
+            <div className={classes.divDinamic}>
+              <DinamicCard
+                toGo={"produtos"}
+                onClick={redirectToTarget}
+                variant={"category"}
+                data={categorias}
+              />
+            </div>
           </div>
         </div>
       </Container>
