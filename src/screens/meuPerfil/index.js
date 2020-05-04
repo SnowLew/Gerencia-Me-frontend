@@ -129,6 +129,7 @@ function MeuPerfil() {
 
   let buttonSubmit = () => {
     alert("Perfil Alterado!")
+    let user = {}
     console.log(name, description, contato, localidade, links)
     redirectToTarget("produtos")
   }

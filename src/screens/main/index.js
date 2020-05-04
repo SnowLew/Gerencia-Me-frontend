@@ -160,21 +160,6 @@ function Main() {
             </div>
           </div>
           <Card className={classes.paperBody}></Card>
-
-          <div className={classes.cardHeader}>
-            <h1 className={classes.text}>Categorias</h1>
-          </div>
-
-          <div className={classes.mostSaler}>
-            <div className={classes.divDinamic}>
-              <DinamicCard
-                toGo={"categorias"}
-                onClick={redirectToTarget}
-                variant={"category"}
-                data={categorias}
-              />
-            </div>
-          </div>
         </div>
       </Container>
     </>

@@ -9,6 +9,7 @@ const colors = {
     drawerTextColor: "#D87777",
     buttonDone: "#6de88e",
     buttonClean: "#cce8ed",
+    headerText: "red",
   },
   secondary: {},
 }

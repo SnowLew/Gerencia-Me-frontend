@@ -106,26 +106,35 @@ function Vendedores() {
 
   let categorias = [
     {
+      id: 0,
       name: "Lorem",
       image: "https://picsum.photos/210",
       description: "Something, that makes lot of sense to me",
     },
     {
+      id: 1,
+
       name: "Ipsum",
       image: "https://picsum.photos/211",
       description: "Something, that makes lot of sense to me",
     },
     {
+      id: 2,
+
       name: "Crespola",
       image: "https://picsum.photos/213",
       description: "Something, that makes lot of sense to me",
     },
     {
+      id: 3,
+
       name: "Mortun",
       image: "https://picsum.photos/214",
       description: "Something, that makes lot of sense to me",
     },
     {
+      id: 4,
+
       name: "Ego",
       image: "https://picsum.photos/215",
       description: "Something, that makes lot of sense to me",

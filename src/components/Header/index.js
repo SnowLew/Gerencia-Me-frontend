@@ -13,7 +13,7 @@ import Paper from "@material-ui/core/Paper"
 
 const Image = withStyles((theme) => ({
   root: {
-    width: 100,
+    width: "250px",
     height: "30%",
     backgroundImage: Logo,
     margin: "10px 60px 0px 65px",
