@@ -14,7 +14,7 @@ import Link from "@material-ui/core/Link"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 
-import A from "../../image/logo.png"
+import A from "../../image/logo2.png"
 import colors from "../../colors"
 import api from "../../api"
 
@@ -100,6 +100,9 @@ const useStyles = makeStyles((theme) => ({
     color: primary.darkTextPlus,
   },
   field: {},
+  textError: {
+    fontSize: "14px",
+  },
 }))
 
 const { auth } = api()
@@ -135,10 +138,13 @@ export default function SignInSide() {
 
   let [userEmail, setUserEmail] = useState()
   let [userPassword, setUserPassword] = useState()
+  let [isLogedIn, setisLogedIn] = useState(true)
 
   let goLogin = async () => {
     if (await auth(userEmail, userPassword)) {
       window.location.reload(false)
+    } else {
+      setisLogedIn(false)
     }
   }
 
@@ -189,11 +195,13 @@ export default function SignInSide() {
                 fullWidth
                 variant={"outlined"}
                 className={classes.buttonLogin}
-                onClick={async () => await goLogin()}
+                onClick={async () => goLogin()}
               >
                 Login!
               </Button>
-
+              {!isLogedIn && (
+                <h1 className={classes.textError}>Dados Invalidos</h1>
+              )}
               <Grid className={classes.recovery} container>
                 <Grid className={classes.textRecovery}>
                   <Link href="#" variant="body3">

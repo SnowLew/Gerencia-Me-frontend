@@ -162,7 +162,7 @@ function Vendedores() {
       <Container className={classes.paper}>
         <div className={classes.wallpaper}>
           <div className={classes.cardHeader}>
-            <h1 className={classes.text}>Vendedores</h1>
+            <h1 className={classes.text}>Lojas</h1>
           </div>
 
           <div className={classes.mostSaler}>

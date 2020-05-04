@@ -272,7 +272,7 @@ export default function MenuNavigator(props) {
               : classes.button
           }
         >
-          Vendedores
+          Lojas
         </Button>
         <Button
           onClick={() => redirectToTarget("listaDesejos")}
@@ -283,16 +283,6 @@ export default function MenuNavigator(props) {
           }
         >
           Lista de Desejos
-        </Button>
-        <Button
-          onClick={() => redirectToTarget("carrinho")}
-          className={
-            props.routeListen == "carrinho"
-              ? classes.buttonActivate
-              : classes.button
-          }
-        >
-          Carrinho
         </Button>
       </ButtonGroup>
     </div>
