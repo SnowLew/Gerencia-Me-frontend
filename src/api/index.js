@@ -7,6 +7,20 @@ let token = localStorage.getItem("token") || null
 axios.defaults.headers.Authorization = "bearer " + token
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
 
+axios.interceptors.request.use(
+  async (config) => {
+    if (localStorage.getItem("expires") < Date.now()) {
+      localStorage.removeItem("token")
+      localStorage.removeItem("expires")
+      config.headers.Authorization = null
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
 const auth = (email, password) => {
   if (email && password) {
     axios
