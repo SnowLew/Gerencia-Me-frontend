@@ -89,6 +89,10 @@ const useStyles = makeStyles((theme) => ({
   listItemIcon: {
     margin: 30,
   },
+  drawerList: {
+    overflowY: "auto",
+    overflowX: "hidden",
+  },
 }))
 
 export default function MenuNavigator(props) {
@@ -179,7 +183,7 @@ export default function MenuNavigator(props) {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
       >
-        <List>
+        <List className={classes.drawerList}>
           <Avatar
             variant={"circle"}
             className={classes.avatar}
