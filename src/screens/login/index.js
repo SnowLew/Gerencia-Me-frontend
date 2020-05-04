@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
+import { useHistory } from "react-router-dom"
 
 import Typography from "@material-ui/core/Typography"
 import Link from "@material-ui/core/Link"
@@ -126,6 +127,18 @@ function Copyright() {
 
 export default function SignInSide() {
   const classes = useStyles()
+  let history = useHistory()
+
+  let [userName, setUserName] = useState()
+  let [userPassword, setUserPassword] = useState()
+
+  let goLogin = () => {
+    console.log(userName, userPassword)
+  }
+
+  let redirectToTarget = () => {
+    history.push(`/produtos`)
+  }
 
   return (
     <Container className={classes.root}>
@@ -142,9 +155,11 @@ export default function SignInSide() {
                 required
                 fullWidth
                 className={classes.formInput}
-                id="outlined-basic"
+                id="user-name"
                 label="Usuario"
                 variant="outlined"
+                value={userName}
+                onChange={(event) => setUserName(event.target.value)}
               />
 
               <TextField
@@ -153,9 +168,13 @@ export default function SignInSide() {
                 fullWidth
                 color={primary.backgroundColor}
                 className={classes.formInput}
-                id="outlined-basic"
+                id="user-pass"
                 label="Senha"
+                type="password"
+                autoComplete="current-password"
                 variant="outlined"
+                value={userPassword}
+                onChange={(event) => setUserPassword(event.target.value)}
               />
 
               <FormControlLabel
@@ -165,11 +184,10 @@ export default function SignInSide() {
               />
 
               <Button
-                type="submit"
-                href="/produtos"
                 fullWidth
                 variant={"outlined"}
                 className={classes.buttonLogin}
+                onClick={goLogin}
               >
                 Login!
               </Button>
