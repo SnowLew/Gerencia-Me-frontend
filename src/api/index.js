@@ -13,6 +13,7 @@ const api = () => {
       if (localStorage.getItem("expires") < Date.now()) {
         localStorage.removeItem("token")
         localStorage.removeItem("expires")
+        localStorage.removeItem("userid")
         config.headers.Authorization = null
       }
       return config
@@ -28,9 +29,12 @@ const api = () => {
         const res = await axios.post("/auth", { email, password })
         localStorage.removeItem("expires")
         localStorage.removeItem("token")
+        localStorage.removeItem("userid")
         if (res.data.token) {
+          console.log(res.data.user)
           await localStorage.setItem("token", res.data.token)
           await localStorage.setItem("expires", res.data.expires)
+          await localStorage.setItem("userId", res.data.user.id)
           return true
         }
       } catch (error) {

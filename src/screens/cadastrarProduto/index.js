@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
+import api from "../../api"
+
 let { primary } = colors
 
 const styles = makeStyles({
@@ -115,16 +117,15 @@ function CadastrarProduto() {
     history.push(`/${to}`)
   }
 
-  let buttonSubmit = () => {
+  let buttonSubmit = async () => {
     let newProd = {
       name,
       price,
       category,
-      description,
-      pictures,
+      desc: description,
+      userId: Number(await localStorage.getItem("userId")),
     }
-    console.log(newProd)
-    alert("Produto Cadastrado!")
+    await api().products.createProduct(newProd)
     redirectToTarget("produtos")
   }
 
@@ -206,7 +207,7 @@ function CadastrarProduto() {
 
               <div className={classes.divButtons}>
                 <Button
-                  onClick={() => buttonSubmit()}
+                  onClick={async () => await buttonSubmit()}
                   className={classes.enviar}
                 >
                   <p>Enviar</p>
