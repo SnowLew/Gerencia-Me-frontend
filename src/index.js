@@ -21,7 +21,7 @@ import "./index.css"
 
 const fontTheme = createMuiTheme({
   typography: {
-    fontFamily: '"PT Sans", sans-serif',
+    fontFamily: '"Roboto Condensed", sans-serif',
   },
 })
 
