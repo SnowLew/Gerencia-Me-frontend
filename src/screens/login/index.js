@@ -137,14 +137,9 @@ export default function SignInSide() {
   let [userPassword, setUserPassword] = useState()
 
   let goLogin = async () => {
-    console.time()
-    await auth(userEmail, userPassword)
-    console.timeEnd()
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        window.location.reload(false)
-      }
-    }, 1500)
+    if (await auth(userEmail, userPassword)) {
+      window.location.reload(false)
+    }
   }
 
   return (
