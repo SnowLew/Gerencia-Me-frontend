@@ -8,22 +8,29 @@ axios.defaults.headers.Authorization = "bearer " + token
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL
 
 const auth = (email, password) => {
-  axios
-    .post("/auth", { email, password })
-    .then((res) => {
-      localStorage.removeItem("expires")
-      localStorage.removeItem("token")
-      localStorage.setItem("expires", res.data.expires)
-      localStorage.setItem("token", res.data.token)
-    })
-    .catch((error) => {
-      console.log(error.response)
-    })
+  if (email && password) {
+    axios
+      .post("/auth", { email, password })
+      .then((res) => {
+        localStorage.removeItem("expires")
+        localStorage.removeItem("token")
+        if (res.data.token) {
+          localStorage.setItem("token", res.data.token)
+          localStorage.setItem("expires", res.data.expires)
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error.response)
+        }
+      })
+  }
 }
 
 export default () => {
   return {
     auth,
+    axios,
     stores: stores(axios),
     categories: categories(axios),
     products: products(axios),

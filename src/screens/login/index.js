@@ -16,6 +16,8 @@ import Checkbox from "@material-ui/core/Checkbox"
 
 import A from "../../image/logo.png"
 import colors from "../../colors"
+import api from "../../api"
+
 let { primary } = colors
 
 const useStyles = makeStyles((theme) => ({
@@ -100,6 +102,8 @@ const useStyles = makeStyles((theme) => ({
   field: {},
 }))
 
+const { auth } = api()
+
 const GreenCheckbox = withStyles({
   root: {
     color: primary.darkText,
@@ -129,11 +133,14 @@ export default function SignInSide() {
   const classes = useStyles()
   let history = useHistory()
 
-  let [userName, setUserName] = useState()
+  let [userEmail, setUserEmail] = useState()
   let [userPassword, setUserPassword] = useState()
 
-  let goLogin = () => {
-    console.log(userName, userPassword)
+  let goLogin = async () => {
+    await auth(userEmail, userPassword)
+    if (localStorage.getItem("token")) {
+      redirectToTarget()
+    }
   }
 
   let redirectToTarget = () => {
@@ -158,8 +165,8 @@ export default function SignInSide() {
                 id="user-name"
                 label="Usuario"
                 variant="outlined"
-                value={userName}
-                onChange={(event) => setUserName(event.target.value)}
+                value={userEmail}
+                onChange={(event) => setUserEmail(event.target.value)}
               />
 
               <TextField
@@ -187,7 +194,7 @@ export default function SignInSide() {
                 fullWidth
                 variant={"outlined"}
                 className={classes.buttonLogin}
-                onClick={goLogin}
+                onClick={async () => await goLogin()}
               >
                 Login!
               </Button>

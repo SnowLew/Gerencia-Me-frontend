@@ -15,7 +15,7 @@ import PlataformasVenda from "./screens/plataformasVenda"
 import Configuracoes from "./screens/configuracoes"
 
 import * as serviceWorker from "./serviceWorker"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
 import "./index.css"
@@ -59,6 +59,10 @@ ReactDOM.render(
             component={PlataformasVenda}
           />
           <Route path="/configuracoes" exact={true} component={Configuracoes} />
+          {localStorage.getItem("expires") <= Date.now() &&
+            localStorage.getItem("token") && (
+              <Redirect to={{ pathname: "produtos" }}></Redirect>
+            )}
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>
