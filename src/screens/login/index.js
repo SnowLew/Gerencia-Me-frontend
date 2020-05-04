@@ -137,14 +137,14 @@ export default function SignInSide() {
   let [userPassword, setUserPassword] = useState()
 
   let goLogin = async () => {
+    console.time()
     await auth(userEmail, userPassword)
-    if (localStorage.getItem("token")) {
-      redirectToTarget()
-    }
-  }
-
-  let redirectToTarget = () => {
-    history.push(`/produtos`)
+    console.timeEnd()
+    setTimeout(() => {
+      if (localStorage.getItem("token")) {
+        window.location.reload(false)
+      }
+    }, 1500)
   }
 
   return (

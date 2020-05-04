@@ -25,20 +25,35 @@ const fontTheme = createMuiTheme({
     fontFamily: '"Roboto Condensed", sans-serif',
   },
 })
-localStorage.getItem("token")
 
-// Fazer verificacao
-let isAuth = true
+const isAuth = () => {
+  const expires = localStorage.getItem("expires")
+  const token = localStorage.getItem("token")
+
+  if (!expires || !token) {
+    return false
+  }
+
+  if (expires < Date.now()) {
+    localStorage.removeItem("token")
+    localStorage.removeItem("expires")
+    return false
+  }
+  return true
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemeProvider theme={fontTheme}>
       <BrowserRouter>
         <Switch>
-          {isAuth ? (
+          {isAuth() ? (
             <Route path="/" exact={true} component={Main} />
           ) : (
-            <Route path="/" exact={true} component={Login} />
+            <>
+              <Route path="/" exact={true} component={Login} />
+              <Redirect to={{ pathname: "/" }} />
+            </>
           )}
           <Route
             path="/mainCategorias"
@@ -68,10 +83,6 @@ ReactDOM.render(
             component={PlataformasVenda}
           />
           <Route path="/configuracoes" exact={true} component={Configuracoes} />
-          {localStorage.getItem("expires") <= Date.now() &&
-            localStorage.getItem("token") && (
-              <Redirect to={{ pathname: "produtos" }}></Redirect>
-            )}
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>

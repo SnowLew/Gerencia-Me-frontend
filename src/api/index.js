@@ -32,6 +32,7 @@ const auth = (email, password) => {
           localStorage.setItem("token", res.data.token)
           localStorage.setItem("expires", res.data.expires)
         }
+        return true
       })
       .catch((error) => {
         if (error) {
