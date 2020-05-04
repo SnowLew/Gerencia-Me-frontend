@@ -172,7 +172,15 @@ export default function MenuNavigator(props) {
           return <SettingsIcon />
         }
         default: {
-          return <ExitToAppIcon />
+          return (
+            <ExitToAppIcon
+              onClick={async () => {
+                await localStorage.removeItem("token")
+                await localStorage.removeItem("expires")
+                window.location.reload(false)
+              }}
+            />
+          )
         }
       }
     }

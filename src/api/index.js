@@ -31,7 +31,6 @@ const api = () => {
         localStorage.removeItem("token")
         localStorage.removeItem("userid")
         if (res.data.token) {
-          console.log(res.data.user)
           await localStorage.setItem("token", res.data.token)
           await localStorage.setItem("expires", res.data.expires)
           await localStorage.setItem("userId", res.data.user.id)
