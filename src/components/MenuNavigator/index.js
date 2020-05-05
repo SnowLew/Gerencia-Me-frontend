@@ -116,6 +116,9 @@ export default function MenuNavigator(props) {
     {
       text: "Cadastrar Produtos",
     },
+    {
+      text: "Cadastrar Loja",
+    },
     ,
     {
       text: "Sair",
