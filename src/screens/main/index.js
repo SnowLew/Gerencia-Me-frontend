@@ -93,39 +93,10 @@ function Main() {
     }
     setObj(obj)
   }
-  b()
+  React.useEffect(() => {
+    b()
+  }, [])
 
-  let bestSell = [
-    {
-      name: "Banana Suprema",
-      image: "https://picsum.photos/200",
-      description: "Uma banana trazida por um ser supremo",
-      price: 10.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana Plus",
-      image: "https://picsum.photos/150",
-      description: "Uma banana trazida por um ser anciao",
-      price: 9.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana",
-      image: "https://picsum.photos/210",
-      description: "Uma banana normal",
-      price: 4.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana Podre",
-      image: "https://picsum.photos/212",
-      description:
-        "Uma banana normal que passou do ponto pra caramba, ta fedendo.",
-      price: 0.0,
-      autor: "Desconhecido",
-    },
-  ]
   return (
     <>
       <Header />
