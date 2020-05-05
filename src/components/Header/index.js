@@ -50,8 +50,16 @@ function Header() {
         alignItems="center"
       >
         <Image />
+      </Grid>
+    </>
+  )
+}
 
-        <Paper elevation={3} component="form" className={classes.root}>
+export default Header
+
+/*
+
+ <Paper elevation={3} component="form" className={classes.root}>
           <InputBase
             className={classes.input}
             placeholder="Pesquise aqui seu produto"
@@ -65,9 +73,5 @@ function Header() {
             <SearchIcon />
           </IconButton>
         </Paper>
-      </Grid>
-    </>
-  )
-}
 
-export default Header
+        */

@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom"
 
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
+import api from "../../api"
 
 let { primary } = colors
 
@@ -68,114 +69,69 @@ function Vendedores() {
   const classes = styles()
   let history = useHistory()
 
+  const [obj, setObj] = React.useState()
+
+  let b = async () => {
+    let userId = Number(await localStorage.getItem("userId"))
+    let products = await api().stores.getAllStores()
+    let obj = []
+    for (let i = 0; i < products.length; i++) {
+      /*
+      console.log("user criado..")
+      await api().stores.createStore({
+        id: i,
+        email: "aroldogooulart@gmail.com",
+        name: `Lorem Ipsum ${i}`,
+        address: "Cuiabá -Mt",
+        desc: `Certus coelum videbo imo est aërem sit animus. Ego regi fuit dici imo ego esto mea. ${i}`,
+        storeType: "food",
+        userId,
+      })
+      */
+
+      obj = [
+        ...obj,
+        {
+          name: products[i].name,
+          description: products[i].desc,
+          image: `https://picsum.photos/20${i}`,
+        },
+      ]
+    }
+    console.log(products)
+    setObj(obj)
+  }
+  React.useEffect(() => {
+    b()
+  }, [])
+
   let redirectToTarget = (to, param) => {
     history.push(`/${to}/${param}`)
   }
 
-  let bestSell = [
-    {
-      name: "Banana Suprema",
-      image: "https://picsum.photos/200",
-      description: "Uma banana trazida por um ser supremo",
-      price: 10.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana Plus",
-      image: "https://picsum.photos/150",
-      description: "Uma banana trazida por um ser anciao",
-      price: 9.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana",
-      image: "https://picsum.photos/210",
-      description: "Uma banana normal",
-      price: 4.0,
-      autor: "Desconhecido",
-    },
-    {
-      name: "Banana Podre",
-      image: "https://picsum.photos/212",
-      description:
-        "Uma banana normal que passou do ponto pra caramba, ta fedendo.",
-      price: 0.0,
-      autor: "Desconhecido",
-    },
-  ]
-
-  let categorias = [
-    {
-      id: 0,
-      name: "Lorem",
-      image: "https://picsum.photos/210",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      id: 1,
-
-      name: "Ipsum",
-      image: "https://picsum.photos/211",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      id: 2,
-
-      name: "Crespola",
-      image: "https://picsum.photos/213",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      id: 3,
-
-      name: "Mortun",
-      image: "https://picsum.photos/214",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      id: 4,
-
-      name: "Ego",
-      image: "https://picsum.photos/215",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      name: "So",
-      image: "https://picsum.photos/219",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      name: "Cogito",
-      image: "https://picsum.photos/218",
-      description: "Something, that makes lot of sense to me",
-    },
-    {
-      name: "Vincent",
-      image: "https://picsum.photos/216",
-      description: "Something, that makes lot of sense to me",
-    },
-  ]
   return (
     <>
       <Header />
       <MenuNavigator routeListen={"vendedores"} />
       <Container className={classes.paper}>
-        <div className={classes.wallpaper}>
-          <div className={classes.cardHeader}>
-            <h1 className={classes.text}>Lojas</h1>
-          </div>
+        {obj && (
+          <div className={classes.wallpaper}>
+            <div className={classes.cardHeader}>
+              <h1 className={classes.text}>Lojas</h1>
+            </div>
 
-          <div className={classes.mostSaler}>
-            <div className={classes.divDinamic}>
-              <DinamicCard
-                toGo={"produtos"}
-                onClick={redirectToTarget}
-                variant={"category"}
-                data={categorias}
-              />
+            <div className={classes.mostSaler}>
+              <div className={classes.divDinamic}>
+                <DinamicCard
+                  toGo={"produtos"}
+                  onClick={redirectToTarget}
+                  variant={"category"}
+                  data={obj}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Container>
     </>
   )

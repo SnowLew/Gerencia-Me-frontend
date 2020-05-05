@@ -105,7 +105,7 @@ export default function MenuNavigator(props) {
   })
 
   let userInfo = {
-    name: "Aroldo Goulart Barros",
+    name: "Aroldo Goulart",
     urlImage:
       "https://avatars3.githubusercontent.com/u/38509926?s=400&u=97e73e9caf6fe68bebc3019fb7c2c81cf5bda20c&v=4https://avatars3.githubusercontent.com/u/38509926?s=400&u=97e73e9caf6fe68bebc3019fb7c2c81cf5bda20c&v=4",
   }
@@ -115,9 +115,6 @@ export default function MenuNavigator(props) {
     },
     {
       text: "Cadastrar Produtos",
-    },
-    {
-      text: "Configurações",
     },
     ,
     {

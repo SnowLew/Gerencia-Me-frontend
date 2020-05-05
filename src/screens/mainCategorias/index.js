@@ -8,6 +8,7 @@ import { Container, Divider, IconButton, Button } from "@material-ui/core"
 import DinamicCard from "../../components/DinamicCardProduct"
 import Card from "@material-ui/core/Card"
 import { useHistory } from "react-router-dom"
+import api from "../../api"
 
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
@@ -65,39 +66,55 @@ const styles = makeStyles({
 function Main() {
   const classes = styles()
   let history = useHistory()
+  const [obj, setObj] = React.useState()
 
   let redirectToTarget = (to, param) => {
     history.push(`/${to}/${param}`)
   }
 
-  let categorias = [
-    {
-      name: "Alimenticio",
-      image: "https://picsum.photos/210",
-      description: "Something, that makes lot of sense to me",
-    },
-  ]
+  let b = async () => {
+    let products = await api().categories.getAllCategories()
+    let obj = []
+    for (let i = 0; i < products.length; i++) {
+      obj = [
+        ...obj,
+        {
+          name: products[i].name,
+          description: "",
+          image: `https://picsum.photos/20${i}`,
+        },
+      ]
+    }
+    console.log(obj)
+    setObj(obj)
+  }
+  React.useEffect(() => {
+    b()
+  }, [])
+
   return (
     <>
       <Header />
       <MenuNavigator routeListen={"mainCategorias"} />
       <Container className={classes.paper}>
-        <div className={classes.wallpaper}>
-          <div className={classes.cardHeader}>
-            <h1 className={classes.text}>Categorias</h1>
-          </div>
+        {obj && (
+          <div className={classes.wallpaper}>
+            <div className={classes.cardHeader}>
+              <h1 className={classes.text}>Categorias</h1>
+            </div>
 
-          <div className={classes.mostSaler}>
-            <div className={classes.divDinamic}>
-              <DinamicCard
-                toGo={"categorias"}
-                onClick={redirectToTarget}
-                variant={"category"}
-                data={categorias}
-              />
+            <div className={classes.mostSaler}>
+              <div className={classes.divDinamic}>
+                <DinamicCard
+                  toGo={"categorias"}
+                  onClick={redirectToTarget}
+                  variant={"category"}
+                  data={obj}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Container>
     </>
   )
