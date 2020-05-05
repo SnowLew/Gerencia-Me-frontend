@@ -111,6 +111,7 @@ const styles = makeStyles({
 })
 
 function RenderCard(props) {
+  console.log(props)
   const classes = styles()
   let renderObj = []
   let { data } = props
