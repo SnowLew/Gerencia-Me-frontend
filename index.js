@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path")
 const PORT = process.env.PORT || 8888
-const appprincipal = require("./src/indx")
+const appprincipal = require("./src/index")
 
 express()
   .use(express.static(path.join(__dirname, "public")))
