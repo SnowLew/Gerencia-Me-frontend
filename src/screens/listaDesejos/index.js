@@ -4,11 +4,11 @@ import React from "react"
 
 import Header from "../../components/Header"
 import MenuNavigator from "../../components/MenuNavigator"
-import { Container, Divider, IconButton, Button } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import DinamicCard from "../../components/DinamicCardProduct"
 import Card from "@material-ui/core/Card"
 
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
 let { primary } = colors

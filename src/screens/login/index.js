@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
 import { makeStyles, withStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
-import { useHistory } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
 
 import Typography from "@material-ui/core/Typography"
 import Link from "@material-ui/core/Link"
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "40%",
     borderRadius: 17,
     marginBottom: "0.5%",
-    minWidth: 400,
+    minWidth: 450,
   },
   formContent: {
     backgroundColor: primary.lighBackgroundColor,
@@ -134,7 +134,7 @@ function Copyright() {
 
 export default function SignInSide() {
   const classes = useStyles()
-  let history = useHistory()
+  //let history = useHistory()
 
   let [userEmail, setUserEmail] = useState()
   let [userPassword, setUserPassword] = useState()

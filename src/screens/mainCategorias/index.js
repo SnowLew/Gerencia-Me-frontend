@@ -4,13 +4,13 @@ import React from "react"
 
 import Header from "../../components/Header"
 import MenuNavigator from "../../components/MenuNavigator"
-import { Container, Divider, IconButton, Button } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import DinamicCard from "../../components/DinamicCardProduct"
-import Card from "@material-ui/core/Card"
 import { useHistory } from "react-router-dom"
 import api from "../../api"
+import NotFound from "../../components/NotFound"
 
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
 let { primary } = colors
@@ -72,24 +72,26 @@ function Main() {
     history.push(`/${to}/${param}`)
   }
 
-  let b = async () => {
+  let showProducts = async () => {
     let products = await api().categories.getAllCategories()
     let obj = []
-    for (let i = 0; i < products.length; i++) {
-      obj = [
-        ...obj,
-        {
-          name: products[i].name,
-          description: "",
-          image: `https://picsum.photos/20${i}`,
-        },
-      ]
+    if(products) {
+      for (let i = 0; i < products.length; i++) {
+        obj = [
+          ...obj,
+          {
+            name: products[i].name,
+            description: "",
+            image: `https://picsum.photos/20${i}`,
+          },
+        ]
+      }
+      setObj(obj)
     }
-    console.log(obj)
-    setObj(obj)
   }
+
   React.useEffect(() => {
-    b()
+    showProducts()
   }, [])
 
   return (
@@ -116,6 +118,7 @@ function Main() {
           </div>
         )}
       </Container>
+      {!obj && <NotFound/>}
     </>
   )
 }

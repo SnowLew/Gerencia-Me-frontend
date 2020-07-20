@@ -8,15 +8,9 @@ import {
   Container,
   Button,
   TextField,
-  Grid,
-  InputLabel,
-  MenuItem,
-  FormControl,
+  Grid
 } from "@material-ui/core"
-import Select from "react-select"
-
 import { useHistory } from "react-router-dom"
-
 import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
@@ -110,6 +104,7 @@ const styles = makeStyles({
   formControl: {},
 })
 
+/*
 function RenderSelect(props) {
   let obj = [{ value: null, label: "Criar Categoria" }]
   for (let i = 0; i < props.data.length; i++) {
@@ -117,41 +112,48 @@ function RenderSelect(props) {
   }
   return <Select options={obj} onChange={(e) => props.onChange("a")} />
 }
+*/
 
 function CadastrarProduto() {
   const classes = styles()
   let history = useHistory()
-  const [pictures, setPictures] = useState()
+  // const [pictures, setPictures] = useState()
   const [name, setName] = useState()
   const [address, setaddress] = useState()
-  const [category, setCategory] = useState()
-  const [newCategory, setNewCategory] = useState()
+  //const [category, setCategory] = useState()
+  //const [newCategory, setNewCategory] = useState()
   const [desc, setdesc] = useState()
-  const [showMenu, setshowMenu] = useState(false)
+  //const [showMenu, setshowMenu] = useState(false)
 
   let redirectToTarget = (to) => {
     history.push(`/${to}`)
   }
 
   let buttonSubmit = async () => {
-    let userId = Number(await localStorage.getItem("userId"))
+    try {
+      let userId = Number(await localStorage.getItem("userId"))
 
-    let newStore = {
-      id: Object.keys(await api().stores.getAllStores()).length + 1,
-      name,
-      desc,
-      address: null,
-      userId,
-      docNumber: null,
-      storeType: "drugstore",
+      let newStore = {
+        id: Object.keys(await api().stores.getAllStores()).length + 1,
+        name,
+        desc,
+        address: null,
+        userId,
+        docNumber: null,
+        storeType: "drugstore",
+      }
+
+      await api().stores.createStore(newStore)
+
+      alert("Produto Cadastrado!")
+
+      console.log(await api().stores.getAllStores())
+      redirectToTarget("produtos")
     }
-
-    await api().stores.createStore(newStore)
-
-    alert("Produto Cadastrado!")
-
-    console.log(await api().stores.getAllStores())
-    redirectToTarget("produtos")
+    catch (e) {
+      alert('Sem conexão com banco de dados.')
+    }
+    
   }
 
   return (

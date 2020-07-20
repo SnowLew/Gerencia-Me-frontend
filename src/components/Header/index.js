@@ -3,13 +3,8 @@ import React from "react"
 import Logo from "../../image/logo.png"
 import Avatar from "@material-ui/core/Avatar"
 
-import { makeStyles, withStyles } from "@material-ui/core/styles"
-import Container from "@material-ui/core/Container"
+import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import SearchIcon from "@material-ui/icons/Search"
-import IconButton from "@material-ui/core/IconButton"
-import InputBase from "@material-ui/core/InputBase"
-import Paper from "@material-ui/core/Paper"
 
 const Image = withStyles((theme) => ({
   root: {
@@ -20,6 +15,7 @@ const Image = withStyles((theme) => ({
   },
 }))((props) => <Avatar src={Logo} {...props} />)
 
+/*
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "8px 10px 0px 5px ",
@@ -37,10 +33,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 12,
   },
 }))
+*/
 
 function Header() {
-  const classes = useStyles()
-
   return (
     <>
       <Grid

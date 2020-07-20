@@ -9,14 +9,8 @@ import {
   Button,
   TextField,
   Grid,
-  InputLabel,
-  MenuItem,
-  FormControl,
 } from "@material-ui/core"
-import Select from "react-select"
-
 import { useHistory } from "react-router-dom"
-
 import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
@@ -110,6 +104,7 @@ const styles = makeStyles({
   formControl: {},
 })
 
+/*
 function RenderSelect(props) {
   let obj = [{ value: null, label: "Criar Categoria" }]
   for (let i = 0; i < props.data.length; i++) {
@@ -117,6 +112,7 @@ function RenderSelect(props) {
   }
   return <Select options={obj} onChange={(e) => props.onChange("a")} />
 }
+*/
 
 function CadastrarProduto() {
   const classes = styles()
@@ -126,15 +122,17 @@ function CadastrarProduto() {
   const [price, setPrice] = useState()
   const [category, setCategory] = useState()
   const [newCategory, setNewCategory] = useState()
-  const [categoryToSelect, setcategoryToSelect] = useState()
+  //const [categoryToSelect, setcategoryToSelect] = useState()
   const [description, setDescription] = useState()
-  const [showMenu, setshowMenu] = useState(false)
+  //const [showMenu, setshowMenu] = useState(false)
 
+  /*
   function toogle(event) {
     event.preventDefault()
     setshowMenu(!showMenu)
   }
-
+  */
+  
   let redirectToTarget = (to) => {
     history.push(`/${to}`)
   }

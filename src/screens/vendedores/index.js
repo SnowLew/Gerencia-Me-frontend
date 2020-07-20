@@ -4,16 +4,13 @@ import React from "react"
 
 import Header from "../../components/Header"
 import MenuNavigator from "../../components/MenuNavigator"
-import { Container, Divider, IconButton, Button } from "@material-ui/core"
-import Paper from "@material-ui/core/Paper"
-import FavoriteIcon from "@material-ui/icons/Favorite"
+import { Container } from "@material-ui/core"
 import DinamicCard from "../../components/DinamicCardProduct"
-import Card from "@material-ui/core/Card"
 import { useHistory } from "react-router-dom"
-
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 import api from "../../api"
+import NotFound from "../../components/NotFound"
 
 let { primary } = colors
 
@@ -71,38 +68,40 @@ function Vendedores() {
 
   const [obj, setObj] = React.useState()
 
-  let b = async () => {
-    let userId = Number(await localStorage.getItem("userId"))
+  let showProducts = async () => {
+    // let userId = Number(await localStorage.getItem("userId"))
     let products = await api().stores.getAllStores()
     let obj = []
-    for (let i = 0; i < products.length; i++) {
-      /*
-      console.log("user criado..")
-      await api().stores.createStore({
-        id: i,
-        email: "aroldogooulart@gmail.com",
-        name: `Lorem Ipsum ${i}`,
-        address: "Cuiabá -Mt",
-        desc: `Certus coelum videbo imo est aërem sit animus. Ego regi fuit dici imo ego esto mea. ${i}`,
-        storeType: "food",
-        userId,
-      })
-      */
+    if(products) {
+      for (let i = 0; i < products.length; i++) {
+        /*
+        console.log("user criado..")
+        await api().stores.createStore({
+          id: i,
+          email: "aroldogooulart@gmail.com",
+          name: `Lorem Ipsum ${i}`,
+          address: "Cuiabá -Mt",
+          desc: `Certus coelum videbo imo est aërem sit animus. Ego regi fuit dici imo ego esto mea. ${i}`,
+          storeType: "food",
+          userId,
+        })
+        */
 
-      obj = [
-        ...obj,
-        {
-          name: products[i].name,
-          description: products[i].desc,
-          image: `https://picsum.photos/20${i}`,
-        },
-      ]
+        obj = [
+          ...obj,
+          {
+            name: products[i].name,
+            description: products[i].desc,
+            image: `https://picsum.photos/20${i}`,
+          },
+        ]
+      }
+      setObj(obj)
     }
-    console.log(products)
-    setObj(obj)
   }
+
   React.useEffect(() => {
-    b()
+    showProducts()
   }, [])
 
   let redirectToTarget = (to, param) => {
@@ -133,6 +132,7 @@ function Vendedores() {
           </div>
         )}
       </Container>
+      {!obj && <NotFound/>}
     </>
   )
 }

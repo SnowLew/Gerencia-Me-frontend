@@ -158,6 +158,7 @@ function MeuPerfil() {
                         width={"100%"}
                         className={classes.image}
                         src={user.pictures}
+                        alt="Foto de Usuario"
                       />
                     </div>
                   </Grid>

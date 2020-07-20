@@ -1,3 +1,4 @@
+
 import React from "react"
 import ReactDOM from "react-dom"
 
@@ -19,7 +20,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
 import "./index.css"
-// teste
+
 const fontTheme = createMuiTheme({
   typography: {
     fontFamily: '"Roboto Condensed", sans-serif',
@@ -47,7 +48,7 @@ ReactDOM.render(
     <MuiThemeProvider theme={fontTheme}>
       <BrowserRouter>
         <Switch>
-          {isAuth() ? (
+          {!isAuth() ? (
             <Route path="/" exact={true} component={Main} />
           ) : (
             <>

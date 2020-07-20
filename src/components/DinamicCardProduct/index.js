@@ -2,15 +2,12 @@
 /* eslint-disable react/jsx-key */
 import React from "react"
 
-import { Container, Divider, IconButton, Button } from "@material-ui/core"
+import { Divider, IconButton, Button } from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart"
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
-
-import Card from "@material-ui/core/Card"
-
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import colors from "../../colors"
 
 let { primary } = colors
@@ -122,7 +119,7 @@ function RenderCard(props) {
         <Paper elevation={0} className={classes.mostSalerBackground}>
           <div>
             <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
-            <img className={classes.mostSalerImage} src={data[i].image} />
+            <img className={classes.mostSalerImage} alt="Mais Vendidos" src={data[i].image} />
             <div className={classes.categoriasDe}>
               <p>{data[i].description}</p>
             </div>
@@ -146,7 +143,7 @@ function RenderCard(props) {
         <div>
           <h1 className={classes.mostSalerTextHeader}>{data[i].name}</h1>
           <h4 className={classes.mostSalerTextAutor}>@{data[i].autor}</h4>
-          <img className={classes.mostSalerImage} src={data[i].image} />
+          <img className={classes.mostSalerImage} alt="Mais Vendidos" src={data[i].image} />
           <div className={classes.mostSalerDivParagraf}>
             <p>{data[i].description}</p>
           </div>

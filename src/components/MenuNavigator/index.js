@@ -20,7 +20,7 @@ import clsx from "clsx"
 
 import PersonIcon from "@material-ui/icons/Person"
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart"
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn"
+// import MonetizationOnIcon from "@material-ui/icons/MonetizationOn"
 import SettingsIcon from "@material-ui/icons/Settings"
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 
@@ -145,6 +145,8 @@ export default function MenuNavigator(props) {
         route = "configuracoes"
         break
       }
+      default: 
+        route="meuPefil"
     }
     history.push(`/${route}`)
   }
@@ -255,7 +257,7 @@ export default function MenuNavigator(props) {
         <Button
           onClick={() => redirectToTarget("produtos")}
           className={
-            props.routeListen == "produtos"
+            props.routeListen === "produtos"
               ? classes.buttonActivate
               : classes.button
           }
@@ -265,7 +267,7 @@ export default function MenuNavigator(props) {
         <Button
           onClick={() => redirectToTarget("mainCategorias")}
           className={
-            props.routeListen == "mainCategorias"
+            props.routeListen === "mainCategorias"
               ? classes.buttonActivate
               : classes.button
           }
@@ -275,7 +277,7 @@ export default function MenuNavigator(props) {
         <Button
           onClick={() => redirectToTarget("vendedores")}
           className={
-            props.routeListen == "vendedores"
+            props.routeListen === "vendedores"
               ? classes.buttonActivate
               : classes.button
           }
@@ -285,7 +287,7 @@ export default function MenuNavigator(props) {
         <Button
           onClick={() => redirectToTarget("listaDesejos")}
           className={
-            props.routeListen == "listaDesejos"
+            props.routeListen === "listaDesejos"
               ? classes.buttonActivate
               : classes.button
           }
